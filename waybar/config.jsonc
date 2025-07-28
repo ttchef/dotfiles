@@ -18,6 +18,10 @@
     ],
     "hyprland/workspaces": {
         "format": ".",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
         "on-click": "activate",
         "disable-scroll": false
     },
