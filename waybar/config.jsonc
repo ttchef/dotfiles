@@ -14,10 +14,10 @@
         "clock"
     ],
     "modules-right": [
-
+        "hyprland/language"
     ],
     "hyprland/workspaces": {
-        "format": ".",
+        "format": "{icon}",
         "format-icons": {
             "active": "",
             "default": ""
@@ -28,8 +28,8 @@
 
        "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "tooltip-format": "<big>{:%Y %B %d}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}"
     },
 
 
@@ -52,15 +52,11 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-    },
+
+    "hyprland/language": {
+        "format": "{:.2}",
+        "tooltip": false
+    }
+
 }
+
