@@ -1,0 +1,12 @@
+
+[[language]]
+name = "c"
+indent = { tab-width = 4, unit = "\t" }
+formatter = { command = "clang-format", args = ["--style={BasedOnStyle: LLVM, IndentWidth: 4}"] }
+auto-format = false
+
+[[language]]
+name = "cpp"
+indent = { tab-width = 4, unit = "\t" }
+formatter = { command = "clang-format", args = ["--style={BasedOnStyle: LLVM, IndentWidth: 4}"] }
+auto-format = false

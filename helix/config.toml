@@ -1,0 +1,22 @@
+
+theme = 'gruvbox_dark_hard'
+
+[editor]
+line-number = "relative"
+completion-timeout = 5
+auto-info = false
+end-of-line-diagnostics = "hint"
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "file-name"]
+center = []
+right = ["diagnostics", "file-type"]
+separator = "│"
+diagnostics = ["warning", "error"]
+workspace-diagnostics = ["warning", "error"]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
