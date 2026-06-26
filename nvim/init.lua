@@ -1,11 +1,10 @@
--- Spaces statt Tab-- Spaces statt Tabs
+
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.g.mapleader = " "
 
--- Verhindert auto-continue von Kommentaren in ALLEN Modi
 vim.cmd("set formatoptions-=r")  -- Don't auto-continue comments on new line with Enter
 vim.cmd("set formatoptions-=o")  -- Don't auto-continue comments with o/O
 vim.cmd("set formatoptions-=c")  -- Don't auto-wrap comments
@@ -15,25 +14,40 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
--- Line Numbers
 vim.o.number = true
 --vim.o.relativenumber = true
 
--- Ctrl+F für Suche aktivieren
+-- searching
 vim.keymap.set('n', '<C-f>', '/', { desc = 'Search forward' })
 vim.keymap.set('n', '<C-F>', '?', { desc = 'Search backward' })
-
--- ESC um Suche zu beenden und Highlighting zu entfernen
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { silent = true, desc = 'Clear search highlighting' })
 
--- Terminal Keybindings
+-- terminal splits
 vim.keymap.set('n', '<leader>th', ':belowright split | terminal<CR>', { desc = 'Open terminal in horizontal split below' })
 vim.keymap.set('n', '<leader>tv', ':vsplit | terminal<CR>', { desc = 'Open terminal in vertical split' })
-vim.keymap.set('n', '<leader>tt', ':terminal<CR>', { desc = 'Open terminal in current buffer' })
 
--- Terminal mode keybindings (um aus dem Terminal rauszukommen)
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { desc = 'Window commands in terminal mode' })
+vim.keymap.set('n', '<leader>e', ':Ntree<CR>', { desc = 'Toggle Ntree' })
+vim.keymap.set('n', '<leader>s', ':w | Ntree<CR>', { desc = 'Save file and open Ntree' })
+
+-- Unmap Left Arrow
+vim.keymap.set({'n', 'v', 'i'}, '<Left>', function()
+	vim.cmd('echo "No left for you"')
+end)
+
+-- Unmap Right Arrow
+vim.keymap.set({'n', 'v', 'i'}, '<Right>', function()
+	vim.cmd('echo "No right for you"')
+end)
+
+-- Unmap Up Arrow
+vim.keymap.set({'n', 'v', 'i'}, '<Up>', function()
+	vim.cmd('echo "No up for you"')
+end)
+
+-- Unmap Left Arrow
+vim.keymap.set({'n', 'v', 'i'}, '<Down>', function()
+	vim.cmd('echo "No down for you"')
+end)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -51,7 +65,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Toggle-Funktion für Diagnostics
+-- toggle diagnostics
 vim.diagnostic.enable(false)
 local diagnostics_active = false
 local function toggle_diagnostics()
@@ -86,7 +100,6 @@ local plugins = {
     config = function()
       require("gruvbox").setup({
         palette_overrides = {
-          -- Nur leicht dunkler als standard
           dark0_hard = "#1a1a1a",
           dark0 = "#1a1a1a",
         },
@@ -130,7 +143,6 @@ local plugins = {
       require("nvim-autopairs").setup {}
     end,
   },
-  -- Lualine mit angepasstem dunklerem Theme
   {
     "nvim-lualine/lualine.nvim",
     config = function()
@@ -187,7 +199,7 @@ local plugins = {
         ensure_installed = { 
           "lua_ls",    -- Lua
           "clangd",    -- C/C++
-          "glslls",    -- GLSL
+          "glsl_analyzer",    -- GLSL
           "harper_ls", -- Harper
           "rust_analyzer",
           "zls"        -- Zig
@@ -214,7 +226,7 @@ local plugins = {
         capabilities = capabilities,
         cmd = { "clangd", "--background-index", "--all-scopes-completion" },
       })
-      lspconfig.glslls.setup({
+      lspconfig.glsl_analyzer.setup({
         capabilities = capabilities
       })
       lspconfig.harper_ls.setup({
@@ -223,6 +235,11 @@ local plugins = {
       lspconfig.zls.setup({
         capabilities = capabilities,
         cmd = { "zls" },
+        settings = {
+          zls = {
+            zig_lib_path = "/home/ttchef/.zvm/master/lib",
+          },
+        },
       })
       
       -- LSP Keybindings mit neuen Fenstern
@@ -301,13 +318,6 @@ local plugins = {
           ghost_text = false, -- Kein Ghost Text
         }
       })
-    end
-  },
-  -- Usage tracking
-  {
-    "Aityz/usage.nvim",
-    config = function()
-      require('usage').setup()
     end
   },
 }

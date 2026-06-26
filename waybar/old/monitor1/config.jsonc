@@ -1,0 +1,67 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 45, // Waybar height (to be removed for auto height) 
+    "margin-bottom": 0,
+    "spacing": 4, // Gaps between modules (4px)
+
+    "modules-left": [
+        "custom/workspaces"
+    ],
+    "modules-center": [
+        "pulseaudio",
+        "clock"
+    ],
+    "modules-right": [
+        "hyprland/language"
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon} {name}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
+        "on-click": "activate",
+        "disable-scroll": false
+    },
+    "custom/workspaces": {
+        "exec": "/home/ttchef/.config/waybar/scripts/workspaces.sh",
+        "interval": 1,
+        "format": "{}"
+    },
+
+       "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B %d}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}"
+    },
+
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "hyprland/language": {
+        "format": "{:.2}",
+        "tooltip": false
+    }
+
+}
+

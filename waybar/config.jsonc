@@ -14,7 +14,8 @@
         "clock"
     ],
     "modules-right": [
-        "hyprland/language"
+        "hyprland/language",
+        "custom/swaync"
     ],
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -24,6 +25,11 @@
         },
         "on-click": "activate",
         "disable-scroll": false
+    },
+    "custom/workspaces": {
+        "exec": "/home/ttchef/.config/waybar/scripts/workspaces.sh",
+        "interval": 1,
+        "format": "{}"
     },
 
        "clock": {
@@ -56,7 +62,29 @@
     "hyprland/language": {
         "format": "{:.2}",
         "tooltip": false
-    }
+    },
+
+"custom/swaync": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+},
+
 
 }
 

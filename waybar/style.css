@@ -118,6 +118,13 @@ label:focus {
     padding: 0px 20px;
 }
 
+#custom-swaync {
+    background-color: #3A3A3A;
+    color: #ffffff;
+    margin: 5 5px;
+    padding: 0px 20px;
+}
+
 
 #mpd {
     background-color: #66cc99;
