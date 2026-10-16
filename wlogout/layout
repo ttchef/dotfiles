@@ -1,0 +1,35 @@
+{
+    "label" : "lock",
+    "action" : "$HOME/.config/wlogout/scripts/action lock",
+    "keybind" : "l"
+}
+
+{
+    "label" : "logout",
+    "action" : "$HOME/.config/wlogout/scripts/action logout",
+    "keybind" : "e"
+}
+
+{
+    "label" : "shutdown",
+    "action" : "$HOME/.config/wlogout/scripts/action shutdown",
+    "keybind" : "p"
+}
+
+{
+    "label" : "reboot",
+    "action" : "$HOME/.config/wlogout/scripts/action reboot",
+    "keybind" : "r"
+}
+
+{
+    "label" : "suspend",
+    "action" : "$HOME/.config/wlogout/scripts/action suspend",
+    "keybind" : "s"
+}
+
+{
+    "label" : "hibernate",
+    "action" : "$HOME/.config/wlogout/scripts/action hibernate",
+    "keybind" : "h"
+}
